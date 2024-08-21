@@ -80,7 +80,3 @@ jobs:
           ls -l ~/.ssh
           head -n 10 ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          
-          # Start SSH agent and add key
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa 
