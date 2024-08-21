@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd product  # Assuming go.mod is inside the "service" directory
+          cd product  
           go mod tidy
 
       - name: Build
