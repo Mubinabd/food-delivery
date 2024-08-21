@@ -64,7 +64,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cd product  # Assuming tests are in the "service" directory
+          cd product  
           go test ./...
   deploy:
     runs-on: ubuntu-latest
