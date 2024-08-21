@@ -1,0 +1,51 @@
+
+p, admin, /api/cart,     POST
+p, admin, /api/cart,     PUT
+p, admin, /api/cart/:id, DELETE
+p, user,  /api/cart/:id, GET
+p, user,  /api/cart/all, GET
+
+p, admin, /api/order,                POST
+p, user,  /api/order/:id,            GET
+p, admin, /api/order,                PUT
+p, user,  /api/order/all,            GET
+p, admin, /api/order/courier/history,GET
+p, admin, /api/order/:id,            DELETE
+
+p, admin, /api/order-item,         POST
+p, user,  /api/order-item/:id ,    GET
+p, user,  /api/order-item/all ,    GET
+p, admin, /api/order-item ,        PUT
+p, user,  /api/order-item/order,   GET
+p, user,  /api/order-item/product, GET
+
+
+p, user,  /api/orders/paid, POST
+
+p, admin, /api/notification,     POST
+p, user,  /api/notification/:id, GET
+p, user,  /api/notification/all, GET
+p, admin, /api/notification/read,PUT
+
+p, admin, /api/task,        POST
+p, user,  /api/task/:id,    GET
+p, user,  /api/task/all,    GET
+p, admin, /api/task/,       PUT
+p, admin, /api/task/:id,    DELETE
+p, user,  /api/task/user,   GET
+p, user,  /api/task/search, GET
+
+p, admin, /api/courier-location,               POST
+p, user,  /api/courier-location/:id,           GET
+p, user,  /api/courier-location/all,           GET
+p, admin, /api/courier-location/,              PUT
+p, user,  /api/courier-location/by-time-range, GET
+p, admin, /api/courier-location/status,        PUT
+
+p, admin, /api/product,         POST
+p, user,  /api/product/:id,     GET
+p, user,  /api/product,         GET
+p, admin, /api/product/,        PUT
+p, user,  /api/product/search,  GET
+
+p, unuthorized,  /v/file-upload, POST

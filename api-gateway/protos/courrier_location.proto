@@ -1,0 +1,81 @@
+
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/common.proto";
+
+service CourierLocationService {
+    rpc CreateCourierLocation(CreateCourierLocationRequest) returns (Empty) {}
+    rpc GetCourierLocation(GetById) returns (CourierLocation) {}
+    rpc GetAllCourierLocations(GetAllCourierLocationsReq) returns (GetAllCourierLocationsRes) {}
+    rpc UpdateCourierLocation(UpdateCourierLocationRequest) returns (UpdateCourierLocationResponse) {}
+    rpc GetCourierLocationsByTimeRange(GetCourierLocationsByTimeRangeReq) returns (GetCourierLocationsByTimeRangeRes) {}
+    rpc UpdateCourierLocationStatus(UpdateCourierLocationStatusReq) returns (UpdateCourierLocationStatusRes) {}
+}
+
+message CourierLocation {
+    string id = 1;
+    string courier_id = 2;
+    double latitude = 3;
+    double longitude = 4;
+    string start_time = 5;
+    string end_time = 6;
+    string status = 7;
+    string created_at = 8;
+}
+
+message CreateCourierLocationRequest {
+    string courier_id = 1;
+    double latitude = 2;
+    double longitude = 3;
+    string status =4; 
+    string start_time = 5;
+    string end_time = 6;
+}
+
+message UpdateCourierLocationRequest {
+    string id = 1;
+    string courier_id = 2;
+    double latitude = 3;
+    double longitude = 4;
+    string start_time = 5;
+    string end_time = 6;
+}
+
+message UpdateCourierLocationResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetAllCourierLocationsReq {
+    string courier_id = 1;
+    Filter filter = 2;
+}
+
+message GetAllCourierLocationsRes {
+    repeated CourierLocation courier_locations = 1;
+}
+
+message GetCourierLocationsByTimeRangeReq {
+    string courier_id = 1;
+    string start_time = 2;
+    string end_time = 3;
+    Filter filter = 4;
+}
+
+message GetCourierLocationsByTimeRangeRes {
+    repeated CourierLocation courier_locations = 1;
+}
+
+message UpdateCourierLocationStatusReq {
+    string id = 1;
+    string status = 2;
+}
+
+message UpdateCourierLocationStatusRes {
+    bool success = 1;
+    string message = 2;
+}

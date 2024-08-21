@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/common.proto";
+import "protos/order.proto";
+import "protos/product.proto";
+
+service OrderItemService {
+    rpc CreateOrderItem(CreateOrderItemRequest) returns (Empty) {}
+    rpc GetOrderItem(GetById) returns (OrderItem) {}
+    rpc GetAllOrderItems(GetAllOrderItemsReq) returns (GetAllOrderItemsRes) {}
+    rpc UpdateOrderItem(UpdateOrderItemRequest) returns (UpdateOrderItemResponse) {}
+    rpc GetOrderItemsByOrder(GetByOrderReq) returns (GetAllOrderItemsRes) {}
+    rpc GetOrderItemsByProduct(GetByProductReq) returns (GetAllOrderItemsRes) {}
+}
+
+message OrderItem {
+    string id = 1;
+    string order_id = 2;
+    string product_id = 3;
+    int32 quantity = 4;
+    float price = 5;
+    Product product = 6;
+    Order order = 7;
+    string created_at = 8;
+}
+
+message CreateOrderItemRequest {
+    string order_id = 1;
+    string product_id = 2;
+    int32 quantity = 3;
+    float price = 4;
+}
+
+message UpdateOrderItemRequest {
+    string id = 1;
+    string order_id = 2;
+    string product_id = 3;
+    int32 quantity = 4;
+    float price = 5;
+}
+
+message UpdateOrderItemResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetAllOrderItemsReq {
+    string order_id = 1;
+    string product_id = 2;
+    Filter filter = 3;
+}
+
+message GetAllOrderItemsRes {
+    repeated OrderItem order_items = 1;
+}
+
+message GetByOrderReq {
+    string order_id = 1;
+    Filter filter = 2;
+}
+
+message GetByProductReq {
+    string product_id = 1;
+    Filter filter = 2;
+}

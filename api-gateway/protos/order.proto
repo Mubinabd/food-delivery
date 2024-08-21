@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/common.proto";
+
+service OrderService {
+    rpc CreateOrder(CreateOrderReq) returns (Empty) {}
+    rpc GetOrder(GetById) returns (Order) {}
+    rpc GetAllOrders(GetAllOrdersReq) returns (GetAllOrderRes) {}
+    rpc UpdateOrder(UpdateOrderReq) returns (UpdateOrderRes) {}
+    rpc DeleteOrder(GetById) returns (DeleteOrderRes) {}
+    rpc PaidOrder(PaidReq) returns (PaidRes) {}
+    rpc HistoryOrder(GetCourierOrderHistoryRequest) returns (GetCourierOrderHistoryResponse) {}
+}
+
+message GetCourierOrderHistoryRequest {
+    string courier_id = 1; 
+}
+
+message GetCourierOrderHistoryResponse {
+    repeated Order orders = 1; 
+}
+
+
+message PaidReq{
+    string order_id = 1;
+    string cart_id = 2;
+    string product_id = 3;
+    string user_id = 4;
+    int32 total_amount = 5;
+}
+message PaidRes{
+    bool success = 1;
+    string message = 2;
+}
+
+message CreateOrderReq {
+    string user_id = 1;
+    string courier_id = 2;
+    string status = 3;
+    float total_amount = 4;
+    string delivery_address = 5;
+}
+
+message Order {
+    string id = 1;
+    string user_id = 2;
+    string courier_id = 3;
+    string status = 4;
+    float total_amount = 5;
+    string delivery_address = 6;
+    string created_at = 7;
+}
+
+message UpdateOrderReq {
+    string id = 1;
+    string user_id = 2;
+    string courier_id = 3;
+    string status = 4;
+    float total_amount = 5;
+    string delivery_address = 6;
+}
+
+message UpdateOrderRes {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetAllOrdersReq {
+    string status = 1;
+    float total_amount = 2;
+    string delivery_address = 3;
+    Filter filter = 4;
+}
+
+message GetAllOrderRes {
+    repeated Order orders = 1;
+}
+
+message DeleteOrderRes {
+    bool success = 1;
+    string message = 2;
+}
+

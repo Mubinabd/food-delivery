@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/common.proto";
+
+service TaskService {
+    rpc CreateTask(CreatetaskReq) returns (Empty) {}
+    rpc GetTask(GetById) returns (Task) {}
+    rpc GetAllTasks(GetAllTasksReq) returns (GetAllTasksRes) {}
+    rpc UpdateTask(UpdateTaskReq) returns (UpdateTaskRes) {}
+    rpc DeleteTask(GetById) returns (DeleteTaskRes) {}
+    rpc GetTasksByUser(GetByUserReq) returns (GetAllTasksRes) {}
+    rpc SearchTasks(SearchTasksReq) returns (GetAllTasksRes) {}
+}
+
+message CreatetaskReq {
+    string title = 1;
+    string description = 2;
+    int32 user_id_assigned_to = 3;
+    string status = 4;
+    string date = 5;
+}
+
+message Task {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    int32 user_id_assigned_to = 4;
+    string status = 5;
+    string date = 6;
+    string created_at = 7;
+}
+
+message GetAllTasksReq {
+    string status = 1;
+    string date = 2;
+    Filter filter = 3;
+}
+
+message GetAllTasksRes {
+    repeated Task tasks = 1;
+}
+
+message UpdateTaskReq {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    int32 user_id_assigned_to = 4;
+    string status = 5;
+    string date = 6;
+}
+
+message UpdateTaskRes {
+    bool success = 1;
+    string message = 2;
+}
+
+message DeleteTaskRes {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetByUserReq {
+    int32 user_id_assigned_to = 1;
+    Filter filter = 2;
+}
+
+message SearchTasksReq {
+    string title = 1;
+    string description = 2;
+    string status = 3;
+    string date = 4;
+    Filter filter = 5;
+}

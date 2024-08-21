@@ -1,0 +1,64 @@
+syntax="proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/product.proto";
+import "protos/common.proto";
+
+
+service CartService{
+    rpc CreateCart(CreateCartReq) returns (Empty) {}
+    rpc GetCart(GetById) returns (Cart) {}
+    rpc GetAllCarts(GetAllCartsReq) returns (GetAllCartsRes) {}
+    rpc UpdateCart(UpdateCartReq) returns (UpdateCartRes) {}
+    rpc DeleteCart(GetById) returns (DeleteCartResp) {}
+}
+
+message CreateCartReq{
+    string user_id = 1;
+    string product_id = 2;
+    int32 quantity = 3;
+    string options = 4;
+    string name = 5;
+    int64 number = 6;
+}
+
+message Cart{
+    string id = 1;
+    string user_id = 2;
+    Product product_id = 3;
+    int32 quantity = 4;
+    string options = 5;
+    string name = 6;
+    int64 number = 7;
+    string created_at = 8;
+}
+
+message GetAllCartsReq{
+    int32 quantity = 1;
+    Filter filter = 2;
+}
+
+message GetAllCartsRes{
+    repeated Cart carts = 1;
+}
+message UpdateCartReq{
+    string id = 1;
+    string user_id = 2;
+    string product_id = 3;
+    int32 quantity = 4;
+    string options = 5;
+    string name = 6;
+    int64 number = 7;
+}
+message UpdateCartRes{
+    bool success = 1;
+    string message = 2;
+}
+
+message DeleteCartResp{
+    bool success = 1;
+    string message = 2;
+}

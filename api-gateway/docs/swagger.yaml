@@ -1,0 +1,1652 @@
+definitions:
+  product.Cart:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      number:
+        type: integer
+      options:
+        type: string
+      product_id:
+        $ref: '#/definitions/product.Product'
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  product.CourierLocation:
+    properties:
+      courier_id:
+        type: string
+      created_at:
+        type: string
+      end_time:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      start_time:
+        type: string
+      status:
+        type: string
+    type: object
+  product.CreateCartReq:
+    properties:
+      name:
+        type: string
+      number:
+        type: integer
+      options:
+        type: string
+      product_id:
+        type: string
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  product.CreateCourierLocationRequest:
+    properties:
+      courier_id:
+        type: string
+      end_time:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      start_time:
+        type: string
+      status:
+        type: string
+    type: object
+  product.CreateNotificationReq:
+    properties:
+      is_read:
+        type: boolean
+      message:
+        type: string
+      user_id:
+        type: string
+    type: object
+  product.CreateOrderItemRequest:
+    properties:
+      order_id:
+        type: string
+      price:
+        type: number
+      product_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  product.CreateOrderReq:
+    properties:
+      courier_id:
+        type: string
+      delivery_address:
+        type: string
+      status:
+        type: string
+      total_amount:
+        type: number
+      user_id:
+        type: string
+    type: object
+  product.CreateProductRequest:
+    properties:
+      description:
+        type: string
+      image_url:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  product.CreatetaskReq:
+    properties:
+      date:
+        type: string
+      description:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+      user_id_assigned_to:
+        type: integer
+    type: object
+  product.GetAllCartsRes:
+    properties:
+      carts:
+        items:
+          $ref: '#/definitions/product.Cart'
+        type: array
+    type: object
+  product.GetAllCourierLocationsRes:
+    properties:
+      courier_locations:
+        items:
+          $ref: '#/definitions/product.CourierLocation'
+        type: array
+    type: object
+  product.GetAllNotificationsRes:
+    properties:
+      notifications:
+        items:
+          $ref: '#/definitions/product.Notification'
+        type: array
+    type: object
+  product.GetAllOrderItemsRes:
+    properties:
+      order_items:
+        items:
+          $ref: '#/definitions/product.OrderItem'
+        type: array
+    type: object
+  product.GetAllOrderRes:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/product.Order'
+        type: array
+    type: object
+  product.GetAllProductsRes:
+    properties:
+      products:
+        items:
+          $ref: '#/definitions/product.Product'
+        type: array
+    type: object
+  product.GetAllTasksRes:
+    properties:
+      tasks:
+        items:
+          $ref: '#/definitions/product.Task'
+        type: array
+    type: object
+  product.GetCourierLocationsByTimeRangeRes:
+    properties:
+      courier_locations:
+        items:
+          $ref: '#/definitions/product.CourierLocation'
+        type: array
+    type: object
+  product.GetCourierOrderHistoryResponse:
+    properties:
+      orders:
+        items:
+          $ref: '#/definitions/product.Order'
+        type: array
+    type: object
+  product.MarkNotificationAsReadReq:
+    properties:
+      id:
+        type: string
+      is_read:
+        type: boolean
+    type: object
+  product.Notification:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      is_read:
+        type: boolean
+      message:
+        type: string
+      user_id:
+        type: string
+    type: object
+  product.Order:
+    properties:
+      courier_id:
+        type: string
+      created_at:
+        type: string
+      delivery_address:
+        type: string
+      id:
+        type: string
+      status:
+        type: string
+      total_amount:
+        type: number
+      user_id:
+        type: string
+    type: object
+  product.OrderItem:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      order:
+        $ref: '#/definitions/product.Order'
+      order_id:
+        type: string
+      price:
+        type: number
+      product:
+        $ref: '#/definitions/product.Product'
+      product_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  product.PaidReq:
+    properties:
+      cart_id:
+        type: string
+      order_id:
+        type: string
+      product_id:
+        type: string
+      total_amount:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  product.PaidRes:
+    properties:
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+  product.Product:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  product.Task:
+    properties:
+      created_at:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+      user_id_assigned_to:
+        type: integer
+    type: object
+  product.UpdateCartReq:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      number:
+        type: integer
+      options:
+        type: string
+      product_id:
+        type: string
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  product.UpdateCourierLocationRequest:
+    properties:
+      courier_id:
+        type: string
+      end_time:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      start_time:
+        type: string
+    type: object
+  product.UpdateCourierLocationStatusReq:
+    properties:
+      id:
+        type: string
+      status:
+        type: string
+    type: object
+  product.UpdateOrderItemRequest:
+    properties:
+      id:
+        type: string
+      order_id:
+        type: string
+      price:
+        type: number
+      product_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  product.UpdateOrderReq:
+    properties:
+      courier_id:
+        type: string
+      delivery_address:
+        type: string
+      id:
+        type: string
+      status:
+        type: string
+      total_amount:
+        type: number
+      user_id:
+        type: string
+    type: object
+  product.UpdateProductRequest:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  product.UpdateTaskReq:
+    properties:
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+      user_id_assigned_to:
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: This is a sample server celler server.
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/cart:
+    post:
+      consumes:
+      - application/json
+      description: This API creates a new cart.
+      parameters:
+      - description: Cart data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateCartReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: CREATE cart
+      tags:
+      - Cart
+    put:
+      consumes:
+      - application/json
+      description: This API updates an existing cart.
+      parameters:
+      - description: Cart data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateCartReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: UPDATE cart
+      tags:
+      - Cart
+  /api/cart/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API deletes a cart by its ID.
+      parameters:
+      - description: Cart ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "deleted successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: DELETE cart
+      tags:
+      - Cart
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a specific cart by its ID.
+      parameters:
+      - description: Cart ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.Cart'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET cart by ID
+      tags:
+      - Cart
+  /api/cart/all:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all carts with optional filters.
+      parameters:
+      - description: Quantity
+        in: query
+        name: quantity
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllCartsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET all carts
+      tags:
+      - Cart
+  /api/courier-location:
+    post:
+      consumes:
+      - application/json
+      description: This API creates a courier location
+      parameters:
+      - description: Courier Location
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateCourierLocationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: CREATE courier location
+      tags:
+      - CourierLocation
+    put:
+      consumes:
+      - application/json
+      description: This API updates a courier location
+      parameters:
+      - description: Courier Location
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateCourierLocationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: UPDATE courier location
+      tags:
+      - CourierLocation
+  /api/courier-location/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves a courier location by ID
+      parameters:
+      - description: Courier Location ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.CourierLocation'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET courier location
+      tags:
+      - CourierLocation
+  /api/courier-location/all:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves all courier locations with optional filters
+      parameters:
+      - description: Courier ID
+        in: query
+        name: courier_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllCourierLocationsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET all courier locations
+      tags:
+      - CourierLocation
+  /api/courier-location/by-time-range:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves courier locations within a specific time range
+      parameters:
+      - description: Courier ID
+        in: query
+        name: courier_id
+        required: true
+        type: string
+      - description: Start Time
+        in: query
+        name: start_time
+        required: true
+        type: string
+      - description: End Time
+        in: query
+        name: end_time
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetCourierLocationsByTimeRangeRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET courier locations by time range
+      tags:
+      - CourierLocation
+  /api/courier-location/status:
+    put:
+      consumes:
+      - application/json
+      description: This API updates the status of a courier location
+      parameters:
+      - description: Courier Location Status
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateCourierLocationStatusReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: UPDATE courier location status
+      tags:
+      - CourierLocation
+  /api/notification:
+    post:
+      consumes:
+      - application/json
+      description: This API creates a notification
+      parameters:
+      - description: Notification
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateNotificationReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: CREATE notification
+      tags:
+      - Notification
+  /api/notification/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves a notification by ID
+      parameters:
+      - description: Notification ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.Notification'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET notification
+      tags:
+      - Notification
+  /api/notification/all:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves all notifications with optional filters
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllNotificationsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET all notifications
+      tags:
+      - Notification
+  /api/notification/read:
+    put:
+      consumes:
+      - application/json
+      description: This API marks a notification as read
+      parameters:
+      - description: Notification
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.MarkNotificationAsReadReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: MARK notification as read
+      tags:
+      - Notification
+  /api/order:
+    post:
+      consumes:
+      - application/json
+      description: This API creates an order
+      parameters:
+      - description: Order
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateOrderReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: CREATE order
+      tags:
+      - Order
+    put:
+      consumes:
+      - application/json
+      description: This API updates an order
+      parameters:
+      - description: Order
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateOrderReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: UPDATE order
+      tags:
+      - Order
+  /api/order-item:
+    post:
+      consumes:
+      - application/json
+      description: This API creates an order item
+      parameters:
+      - description: Order Item
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateOrderItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: CREATE order item
+      tags:
+      - OrderItem
+    put:
+      consumes:
+      - application/json
+      description: This API updates an order item
+      parameters:
+      - description: Order Item
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateOrderItemRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: UPDATE order item
+      tags:
+      - OrderItem
+  /api/order-item/{id}:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves an order item by ID
+      parameters:
+      - description: Order Item ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.OrderItem'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET order item
+      tags:
+      - OrderItem
+  /api/order-item/all:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves all order items with optional filters
+      parameters:
+      - description: Order ID
+        in: query
+        name: order_id
+        type: string
+      - description: Product ID
+        in: query
+        name: product_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllOrderItemsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET all order items
+      tags:
+      - OrderItem
+  /api/order-item/order:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves order items by order ID with optional filters
+      parameters:
+      - description: Order ID
+        in: query
+        name: order_id
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllOrderItemsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET order items by order ID
+      tags:
+      - OrderItem
+  /api/order-item/product:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves order items by product ID with optional filters
+      parameters:
+      - description: Product ID
+        in: query
+        name: product_id
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllOrderItemsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET order items by product ID
+      tags:
+      - OrderItem
+  /api/order/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API deletes an order by ID
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "deleted successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: DELETE order
+      tags:
+      - Order
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves an order by ID
+      parameters:
+      - description: Order ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.Order'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET order
+      tags:
+      - Order
+  /api/order/all:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves all orders with optional filters
+      parameters:
+      - description: Order Status
+        in: query
+        name: status
+        type: string
+      - description: Delivery Address
+        in: query
+        name: delivery_address
+        type: string
+      - description: Total Amount
+        in: query
+        name: total_amount
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllOrderRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET all orders
+      tags:
+      - Order
+  /api/order/history:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves an order history
+      parameters:
+      - description: Courier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetCourierOrderHistoryResponse'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: GET order history
+      tags:
+      - Order
+  /api/orders/paid:
+    post:
+      consumes:
+      - application/json
+      description: Deducts the product price from the user's cart and checks if the
+        transaction is valid
+      parameters:
+      - description: Paid Request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/product.PaidReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.PaidRes'
+        "400":
+          description: message":"error while paid checkout
+          schema:
+            type: string
+      summary: Pay for an order
+      tags:
+      - Orders
+  /api/product:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all products with optional filters
+      parameters:
+      - description: Product Name
+        in: query
+        name: name
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllProductsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Get all products
+      tags:
+      - Product
+    post:
+      consumes:
+      - application/json
+      description: Create a new product with the given details
+      parameters:
+      - description: Product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Create a new product
+      tags:
+      - Product
+    put:
+      consumes:
+      - application/json
+      description: Update a product with the given details
+      parameters:
+      - description: Product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Update a product
+      tags:
+      - Product
+  /api/product/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a product by its ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "deleted successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Delete a product
+      tags:
+      - Product
+    get:
+      consumes:
+      - application/json
+      description: Get a product's details by its ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.Product'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Get a product by ID
+      tags:
+      - Product
+  /api/product/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for products with filters
+      parameters:
+      - description: Product Name
+        in: query
+        name: name
+        type: string
+      - description: Product Description
+        in: query
+        name: description
+        type: string
+      - description: Product Price
+        in: query
+        name: price
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllProductsRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Search products
+      tags:
+      - Product
+  /api/task:
+    post:
+      consumes:
+      - application/json
+      description: This API creates a new task
+      parameters:
+      - description: Task
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.CreatetaskReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "Created successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+        "500":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Create a new task
+      tags:
+      - Task
+    put:
+      consumes:
+      - application/json
+      description: This API updates a task
+      parameters:
+      - description: Task
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/product.UpdateTaskReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "Updated successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+        "500":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Update a task
+      tags:
+      - Task
+  /api/task/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API deletes a task by its ID
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message": "Deleted successfully'
+          schema:
+            type: string
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+        "500":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Delete a task by ID
+      tags:
+      - Task
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves a task by its ID
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.Task'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Get a task by ID
+      tags:
+      - Task
+  /api/task/all:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves all tasks with optional filters
+      parameters:
+      - description: Task Status
+        in: query
+        name: status
+        type: string
+      - description: Task Date
+        in: query
+        name: date
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllTasksRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Get all tasks
+      tags:
+      - Task
+  /api/task/search:
+    get:
+      consumes:
+      - application/json
+      description: This API searches tasks based on filters
+      parameters:
+      - description: Title
+        in: query
+        name: title
+        type: string
+      - description: Description
+        in: query
+        name: description
+        type: string
+      - description: Status
+        in: query
+        name: status
+        type: string
+      - description: Date
+        in: query
+        name: date
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllTasksRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Search tasks
+      tags:
+      - Task
+  /api/task/user:
+    get:
+      consumes:
+      - application/json
+      description: This API retrieves tasks assigned to a specific user
+      parameters:
+      - description: User ID assigned to
+        in: query
+        name: user_id_assigned_to
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/product.GetAllTasksRes'
+        "400":
+          description: 'error": "error message'
+          schema:
+            type: string
+      summary: Get tasks by user ID
+      tags:
+      - Task
+  /minio/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload a file to MinIO
+      parameters:
+      - description: File to upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Filename
+        in: formData
+        name: filename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Upload a file to MinIO
+      tags:
+      - MinIO
+securityDefinitions:
+  ApiKeyAuth:
+    description: Description for what is this security definition being used
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

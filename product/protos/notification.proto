@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "genproto/product";
+
+package product;
+
+import "protos/common.proto";
+
+service NotificationService {
+    rpc CreateNotification (CreateNotificationReq) returns (Empty) {}
+    rpc GetAllNotifications (GetAllNotificationsReq) returns (GetAllNotificationsRes) {}
+    rpc GetNotification(GetById) returns (Notification) {}
+    rpc MarkNotificationAsRead(MarkNotificationAsReadReq) returns (MarkNotificationAsReadResp) {}
+}
+
+message Notification {
+    string id = 1;
+    string user_id = 2;
+    string message = 3;
+    bool is_read = 4;
+    string created_at = 5;
+}
+
+message CreateNotificationReq {
+    string user_id = 1;
+    string message = 2;
+    bool is_read = 3;
+}
+
+message GetAllNotificationsReq {
+    string user_id = 1;
+    Filter filter = 2;
+}
+
+message GetAllNotificationsRes {
+    repeated Notification notifications = 1;
+}
+
+message MarkNotificationAsReadReq{
+    string id = 1;
+    bool is_read = 2;
+}
+message MarkNotificationAsReadResp {
+    bool success = 1;
+    string message = 2;
+}
