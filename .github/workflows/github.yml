@@ -83,5 +83,4 @@ jobs:
           
           # Start SSH agent and add key
           eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa || { echo "Failed to add SSH key"; exit 1; }
-          ssh-add -l || { echo "No keys added"; exit 1; }
+          ssh-add ~/.ssh/id_rsa 
